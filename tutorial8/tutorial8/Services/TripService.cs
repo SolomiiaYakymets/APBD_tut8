@@ -17,7 +17,7 @@ public class TripService : ITripService
     public async Task<PageResult<TripDto>> GetPaginatedTrips(int page = 1, int pageSize = 10)
     {
         if (page < 1) page = 1;
-        if (pageSize < 10) page = 10;
+        if (pageSize < 10) pageSize = 10;
         var tripsQuery = _dbContext.Trips
             .Include(e => e.ClientTrips).ThenInclude(e => e.IdClientNavigation)
             .Include(e => e.IdCountries)
